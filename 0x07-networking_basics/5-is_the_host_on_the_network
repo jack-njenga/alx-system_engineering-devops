@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script pings an IP address 5 times that is passed as an arg...
+
+if [ -z "$1" ]
+# $1 represents the first arg passed to the script
+# -z checks if $1 is empty
+then
+	echo "Usage: $0 {IP_ADDRESS}"
+	exit 1
+fi
+
+ping -c 5 "$1"
+# ping is used to send ICMP echo request packets
+# -c 5 specifies the count of ping requests to be sent
+# $1 the expected IP address as the arg
