@@ -1,6 +1,6 @@
 # Networking basics #1
 
-![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/285/s7kpNYq.png)
+![](https://www.maketecheasier.com/assets/uploads/2014/01/Find-IP-Adress-and-MAC-Address-Featured.jpg.webp)
 
 ## Learning Objectives
 - What is localhost/127.0.0.1
