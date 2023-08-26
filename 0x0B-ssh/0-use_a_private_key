@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# uses ssh to connect to a virtual server.
+
+username="ubuntu"
+ip="100.26.161.31"
+key="~/.ssh/school"
+
+ssh -i $key $username@$ip
