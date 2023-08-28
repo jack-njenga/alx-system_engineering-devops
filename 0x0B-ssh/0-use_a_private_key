@@ -3,6 +3,5 @@
 
 username="ubuntu"
 ip="100.26.161.31"
-key="~/.ssh/school"
 
-ssh -i $key $username@$ip
+ssh -i ~/.ssh/school $username@$ip
