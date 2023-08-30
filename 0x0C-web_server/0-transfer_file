@@ -1,8 +1,7 @@
-#!/bin/env bash
+#usr/bin/env bash
 # transfers a file from our client to a server.
 
 if [ $# -gt 3 ]; then
-	echo "Great"
 	file_path=$1
 	ip=$2
 	user=$3
