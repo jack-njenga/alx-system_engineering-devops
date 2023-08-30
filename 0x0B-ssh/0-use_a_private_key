@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
 # uses ssh to connect to a virtual server.
 
-username="ubuntu"
-ip="100.26.161.31"
-
-ssh -i ~/.ssh/school $username@$ip
+ssh -i ~/.ssh/school ubuntu@100.26.161.31
