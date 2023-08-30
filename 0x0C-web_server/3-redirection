@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 # Sets up a Nginx server and configs /redirect_me redirection
 
-sudo apt-get update
-sudo apt-get install -y nginx
+if ! command -v nginx> /dev/null;
+then
+	sudo apt-get update
+	sudo apt-get install -y nginx
+fi
 
+ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.html
-sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sudo sed -i "37i\ \n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n" "/etc/nginx/sites-available/default"
 
 sudo service nginx start
