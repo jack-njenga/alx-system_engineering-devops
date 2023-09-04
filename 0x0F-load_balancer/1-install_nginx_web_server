@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# installs nginx and configures it
+
+if command -v nginx &>/dev/null;
+then
+	echo "Nginx is Already Installed."
+else
+	echo "Insatalling Nginx"
+	sudo apt-get update
+	sudo apt-get install -y nginx
+fi
+
+echo "Hello World! (Web-02)" > /var/www/html/index.html
+
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+sudo service nginx start

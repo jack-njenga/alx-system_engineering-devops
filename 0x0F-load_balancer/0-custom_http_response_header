@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Nginx Configuration
+
+if command -v nginx &>/dev/null;
+then
+	echo "Nginx Already Installed"
+else
+	echo "Installing Nginx"
+	sudo apt-get update
+	sudo apt-get install -y nginx
+fi
+
+sudo echo "Hello World! (web-02)" | sudo tee /var/www/html/index.html &>/dev/null
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+sudo mkdir -p /var/www/error
+echo  "Ceci n'est pas une page" | sudo tee /var/www/error/404.html
+sudo sed -i '/server_name _/a error_page 404 /404.html; location = /404.html {root /var/www/error/;internal; }' /etc/nginx/sites-available/default
+sudo sed -i '24i	add_header X-Served-By $HOSTNAME;' /etc/nginx/sites-available/default
+
+# sudo sed -i 's/add_header X-Served-By;/add_header X-Served-By web-02;/g' /etc/nginx/sites-available/default
+
+sudo service nginx restart
