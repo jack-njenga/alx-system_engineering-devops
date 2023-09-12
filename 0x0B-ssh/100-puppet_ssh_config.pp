@@ -1,20 +1,14 @@
 # ssh private key path config and passwdAuth config using puppet
 
-Exec {
-  path => '/bin:/usr/bin:/usr/local/bin',
-}
+include stdlib
 
-exec { 'IdentityFile':
-  command => 'echo "IdentityFile ~/.ssh/school" >> /etc/ssh/ssh_config',
-  unless  => 'grep -q "^IdentityFile ~/.ssh/school" /etc/ssh/ssh_config',
+file_line { 'Declare identity file':
+  path    => '/etc/ssh/ssh_config',
+  line    => '    IdentityFile ~/.ssh/school',
+  replace => true,
 }
-
-exec { 'disable password authentication':
-command => "sed -i 's/^.*PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/ssh_config",
-}
-
-file { '/root/.ssh/config':
-  ensure  => file,
-  mode    => '0600',
-  content => "IdentityFile ~/.ssh/school\nPasswordAuthentication no\n",
+file_line { 'Turn off passwd auth':
+  path    => '/etc/ssh/ssh_config',
+  line    => '    PasswordAuthentication no',
+  replace => true,
 }
