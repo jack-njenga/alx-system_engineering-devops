@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+redirect_config="location /redirectme {\n    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}"
+path="txt"
+
+if grep -q "location /redirectme {" "$path"; then
+        echo "No changes needed. Content already exists."
+else
+        sudo sed -i "/^\s*server\s*{/,/^\s*}\s*$/ {/^\s*server\s*{/ {n; a $redirect_config" txt
+        echo "Content added successfully."
+fi
