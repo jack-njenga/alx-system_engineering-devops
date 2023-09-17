@@ -4,17 +4,17 @@
 get_domain () {
 	subdomain=$1
 	domain=$2
-	
 	dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v s="$subdomain" 'BEGIN { FS = " " } ; { print "The subdomain", s, "is a", $4, "record and points to", $5 }'
 }
-
-if [ $# == 1 ]
+if [ $# -eq 1 ];
 then
-	get_domain "$1" "www"
-	get_domain "$1" "lb_01"
-	get_domain "$1" "web-01"
-	get_domain "$1" "web-02"
-elif [ $# == 2 ]
+	domain="$1"
+	
+	get_domain "www" "$domain"
+	get_domain "lb-01" "$domain"
+	get_domain "web-01" "$domain"
+	get_domain "web-02" "$domain"
+elif [ $# -eq 2 ];
 then
-	get_domain "$1" "$2"
+	get_domain "$2" "$1"
 fi
