@@ -1,0 +1,8 @@
+sudo ufw disable
+sudo service ufw stop
+sudo ufw reset
+sudo ufw allow ssh
+sudo ufw allow https
+sudo ufw allow http
+sudo service ufw start
+sudo ufw enable
