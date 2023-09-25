@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Returns information about his/her TODO list progress.
+Returns information about a users TODO list progress.
 """
 
 import requests
@@ -22,8 +22,8 @@ if __name__ == "__main__":
 
     tt = len(todo_list) + count
     user = requests.get(f"{url}users/{str(sys.argv[1])}").json()
-    name = user["name"]
+    name = user.get('name')
 
     print(f"Employee {name} is done with tasks({len(todo_list)}/{tt}):")
     for todo in todo_list:
-        print(f"\t {todo['title']}")
+        print(f"\t {todo.get('title')}")
