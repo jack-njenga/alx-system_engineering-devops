@@ -3,5 +3,6 @@
 
 dt=$(date +"%d-%m-%Y")
 
-mysqldump -uroot -p"$1" --all-databases>backup.sql
-tar cfz "$dt".tar.gz backup.sql
+mysqldump -u root -p"$1" --all-databases > backup.sql
+
+tar -zcfz "$dt".tar.gz backup.sql
