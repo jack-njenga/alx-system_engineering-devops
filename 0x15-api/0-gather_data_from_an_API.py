@@ -20,7 +20,8 @@ if __name__ == "__main__":
 
     for obj in response:
         if int(obj["userId"]) == int_id:
-            obj_list.append(obj)
+            if obj["completed"]:
+                obj_list.append(obj)
         else:
             count += 1
 
