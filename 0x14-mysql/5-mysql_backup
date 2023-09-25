@@ -5,4 +5,4 @@ dt=$(date +"%d-%m-%Y")
 
 mysqldump -u root -p"$1" --all-databases > backup.sql
 
-tar -zcfz "$dt".tar.gz backup.sql
+tar -zcvf "$dt".tar.gz backup.sql
