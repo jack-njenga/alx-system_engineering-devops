@@ -10,7 +10,7 @@ if __name__ == "__main__":
     try:
         int_id = int(emp_id)
     except Exception as e:
-        print("agrument is not an integer")
+        # print("agrument is not an integer")
         pass
 
     url = "https://jsonplaceholder.typicode.com/"
