@@ -22,8 +22,8 @@ if __name__ == "__main__":
         if int(obj["userId"]) == int_id:
             if obj["completed"]:
                 obj_list.append(obj)
-        else:
-            count += 1
+            else:
+                count += 1
 
     tt = len(obj_list) + count
     user = requests.get(f"{url}users/{str(emp_id)}")
