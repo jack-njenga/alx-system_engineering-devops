@@ -3,8 +3,8 @@
 Extends the script(1-export_to_CSV.py) to export data in the JSON format.
 """
 
-import requests
 import json
+import requests
 import sys
 
 if __name__ == "__main__":
