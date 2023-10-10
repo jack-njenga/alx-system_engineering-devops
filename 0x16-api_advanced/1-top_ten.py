@@ -14,13 +14,16 @@ def top_ten(subreddit):
     headers = {"User-Agent": "Mozilla/5.0"}
     response = requests.get(url, headers=headers, allow_redirects=False)
 
-    try:
-        data = response.json()["data"]
-        count = 1
-        for post in data["children"]:
-            if count <= 10:
-                print(count, post["data"]["title"])
-            count += 1
-        return 0
-    except Exception as e:
-        print("None", e)
+    if response.status_code != 200:
+        print("None")
+    else:
+        try:
+            data = response.json()["data"]
+            count = 1
+            for post in data["children"]:
+                if count <= 10:
+                    print(count, post["data"]["title"])
+                count += 1
+            return 0
+        except Exception as e:
+            print("None")

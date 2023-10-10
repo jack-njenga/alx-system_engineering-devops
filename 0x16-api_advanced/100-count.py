@@ -7,9 +7,7 @@ import requests
 
 def count_words(subreddit, word_list, hot_list=[], after=None):
     """
-    Prints a sorted count of given keywords (case-insensitive,
-    delimited by spaces. Javascript should count as
-    javascript, but java should not).
+    Prints a sorted count of given keywords
     """
     keywords = word_list.split(" ")
 
@@ -30,11 +28,12 @@ def count_words(subreddit, word_list, hot_list=[], after=None):
                 for word in str(title).split(" "):
                     if word in keywords:
                         # + here
+                        pass
             if after:
                 count_words(subreddit, word_list, hot_list, after)
                 return host_list
         except Exception as e:
-            print("--E--:", e)
+            # print("--E--:", e)
             return None
     else:
         return None
