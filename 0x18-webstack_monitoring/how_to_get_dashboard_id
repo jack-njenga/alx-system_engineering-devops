@@ -1,0 +1,23 @@
+# after creating a dashboard from datadog website
+# add these environment variables:
+#	export DD_API_KEY="your api key here"
+#	export DD_APP_KEY="your app key here"
+
+# then verify using:
+
+# Curl command
+curl -X GET "https://api.datadoghq.com/api/v1/validate" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}"
+
+# expected output: {"valid":true}
+
+# then using api V1 to get all dashboards:
+
+# Curl command
+curl -X GET "https://api.datadoghq.com/api/v1/dashboard" -H "Accept: application/json" -H "DD-API-KEY: ${DD_API_KEY}" -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+
+
+# expected output: {"dashboards":[{"id":"ng2-...-4ri","title":"monitor-try","description":null,"layout_type":"ordered","url":"/dashboard/nf4-...-e2i/monitor-try","is_read_only":false,"created_at":"2023-10-11T13:58:14.562080+00:00","modified_at":"2023-10-21T24:20:10.831571+00:00","author_handle":"email@gmail.com","deleted_at":null}]}
+
+# and there is your dashboard id:  "id":"ng2-...-4ri"
