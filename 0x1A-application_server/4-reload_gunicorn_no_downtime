@@ -1,0 +1,14 @@
+#!/bin/bash
+
+proc="gunicorn"
+
+if pgrep -x $proc > /dev/null;then
+        pids=$(pgrep -x $proc)
+
+        for pid in "${pids[@]}"; do
+                kill -HUP $pid
+                echo "$proc at pid $pid killed">/dev/null
+        done
+else
+        echo "$proc is not actualy running."
+fi
